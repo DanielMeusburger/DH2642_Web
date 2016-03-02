@@ -6,7 +6,9 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
   var numberOfGuest = 2;
-
+  //var fullmenu = [];
+  //var dishes = [];
+  //var dish;
 
   this.setNumberOfGuests = function(num) {
     numberOfGuest = num;
@@ -22,10 +24,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // you will need to modify the model (getDish and getAllDishes) 
   // a bit to take the advantage of Angular resource service
   // check lab 5 instructions for details
-
-
-
-
+  
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'}); 
 
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead

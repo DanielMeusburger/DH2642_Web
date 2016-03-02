@@ -6,4 +6,5 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
   
+
 });
