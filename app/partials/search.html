@@ -11,14 +11,15 @@ not support it in free version) and list all the dishes that match the search. -
 				{{status}}
 				<ul>
 					<li ng-repeat="dish in dishes">
+						{{dish.Category}}
 						<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/>
 						{{dish.Title}}
 						<a ng-href="#/dish/{{dish.RecipeID}}">View more</a>
 						{{dish.Category}} {{dish.Subcategory}}
+						<button ng-click="addDish(dish.RecipeID)">Select</button>
 					</li>
 				</ul></div>
 		</div>
-
 		<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 	</div>
 </div>
