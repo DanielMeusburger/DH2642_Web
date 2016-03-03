@@ -7,20 +7,22 @@
 </div>
 
 <div class="row well">
-	<div class="well">
-		{{getFullMenu()}}
-		<ul>
-			<li ng-repeat="dish in fullMenu">
-				<a ng-href="#/dish/{{dish.RecipeID}}">{{dish.Category}} <!-- getDish(fullMenu[1]) -->
-				<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/>
-					{{dish.Title}}
-				</a>
-			</li>
-		</ul>
+	<div style="width: 50%; margin: 0 auto;">
+		<div style="display:block;float:left;max-width:100px;margin-right:20px;margin-bottom:20px;" ng-repeat="dish in fullMenu">
+			{{dish.Category}} <br/>
+			<a ng-href="#/dish/{{dish.RecipeID}}">
+			<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/> </br>
+				{{dish.Title}}
+			</a>
+			<br/>
+			<!-- TODO: Add the cost function -->
+			<span style="color:orange;">50.00 SEK</span>
+		</div>
+		<div style="border-left:1px solid #ddd;padding:20px;color:orange;font-weight:bold;">
+			Total Costs: <!-- TODO Add Total cost function --> 500.00 SEK
+		</div>
+		<div style="clear:both;padding-top:20px;border-top:1px solid #ccc;text-align:center;">
+			<a href="#/preparation" class="btn btn-primary">Print full receipt</a>
+		</div>
 	</div>
-	<a href="#/preparation" class="btn btn-primary">Print full receipt</a>
 </div>
-
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
-
