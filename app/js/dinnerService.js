@@ -6,7 +6,7 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
   var numberOfGuest = 2;
-  var fullmenu = [];
+  var fullMenu = [];
   //var dishes = [];
   //var dish;
 
@@ -25,6 +25,19 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getFullMenu = function () {
     return fullmenu;
   }	
+
+  this.addDishToMenu = function(value){
+    if(fullMenu.indexOf(value) == -1 ){
+      fullMenu.push(value);
+    }
+  }
+
+  this.removeDishFromMenu = function (value){
+    var index = fullMenu.indexOf(value);
+    if (index > -1) {
+      fullMenu.splice(index, 1);
+    }
+  }
 
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
