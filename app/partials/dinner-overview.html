@@ -7,8 +7,20 @@
 </div>
 
 <div class="row well">
+	<div class="well">
+		{{getFullMenu()}}
+		<ul>
+			<li ng-repeat="item in fullMenu">
+				<a ng-href="#/dish/{{dish.RecipeID}}">{{item.Category}} <!-- getDish(fullMenu[1]) -->
+				<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/>
+					{{item.Title}}
+				</a>
+			</li>
+		</ul>
+	</div>
 	<a href="#/preparation" class="btn btn-primary">Print full receipt</a>
 </div>
 
 <!-- TODO in Lab 5: Display the dish information including image, Description, 
 Instructions, Ingredients and total cost. -->
+

@@ -23,7 +23,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   
   //DM
   this.getFullMenu = function () {
-    return fullmenu;
+    return fullMenu;
   }	
 
   this.addDishToMenu = function(value){
