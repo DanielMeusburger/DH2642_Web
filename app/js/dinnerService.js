@@ -18,22 +18,22 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     return numberOfGuest;
   }
   
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'});
-  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'}); 
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'18f3cT02U9f6yRl3OKDpP8NA537kxYKu'}); //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
+  this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:'18f3cT02U9f6yRl3OKDpP8NA537kxYKu'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
   
   //DM
   this.getFullMenu = function () {
     return fullMenu;
   }	
 
-  this.addDishToMenu = function(value){
-    if(fullMenu.indexOf(value) == -1 ){
-      fullMenu.push(value);
+  this.addDishToMenu = function(dish){
+    if(fullMenu.indexOf(dish) == -1 ){
+      fullMenu.push(dish);
     }
   }
 
-  this.removeDishFromMenu = function (value){
-    var index = fullMenu.indexOf(value);
+  this.removeDishFromMenu = function (dish){
+    var index = fullMenu.indexOf(dish);
     if (index > -1) {
       fullMenu.splice(index, 1);
     }

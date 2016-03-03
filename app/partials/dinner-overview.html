@@ -10,10 +10,10 @@
 	<div class="well">
 		{{getFullMenu()}}
 		<ul>
-			<li ng-repeat="item in fullMenu">
-				<a ng-href="#/dish/{{dish.RecipeID}}">{{item.Category}} <!-- getDish(fullMenu[1]) -->
+			<li ng-repeat="dish in fullMenu">
+				<a ng-href="#/dish/{{dish.RecipeID}}">{{dish.Category}} <!-- getDish(fullMenu[1]) -->
 				<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/>
-					{{item.Title}}
+					{{dish.Title}}
 				</a>
 			</li>
 		</ul>
