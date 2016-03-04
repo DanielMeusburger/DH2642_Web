@@ -16,7 +16,7 @@ not support it in free version) and list all the dishes that match the search. -
 						{{dish.Title}}
 						<a ng-href="#/dish/{{dish.RecipeID}}">View more</a>
 						{{dish.Category}} {{dish.Subcategory}}
-						<button ng-click="addDish(dish)">Select</button>
+						<button ng-click="addDish(dish.RecipeID)">Select</button>
 					</li>
 				</ul></div>
 		</div>

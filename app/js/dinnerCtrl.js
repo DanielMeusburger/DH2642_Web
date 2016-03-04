@@ -17,4 +17,17 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   
   $scope.fullMenu = Dinner.getFullMenu();
 
+  $scope.getDishByID = function(dishID) {
+    $scope.status = "Searching...";
+    Dinner.Dish.get({RecipeID:dishID},function(data){
+        $scope.dish = data;
+        $scope.status = "Result Found";
+        console.log(data);
+    },function(data){
+        $scope.status = "There was an error";
+    });
+  }  
+  
+  
+
 });

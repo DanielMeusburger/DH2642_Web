@@ -9,10 +9,10 @@
 <div class="row well">
 	<div style="width: 50%; margin: 0 auto;">
 		<div style="display:block;float:left;max-width:100px;margin-right:20px;margin-bottom:20px;" ng-repeat="item in fullMenu">
-			{{dish.Category}} <br/>
+			{{getDishByID(item).Category}}<br/>
 			<a ng-href="#/dish/{{dish.RecipeID}}">
 			<img ng-src="{{dish.ImageURL}}" style="height:100px;width:100px;"/> </br>
-				{{dish.Title}}
+				{{getDishByID(item).Title}}
 			</a>
 			<br/>
 			<!-- TODO: Add the cost function -->

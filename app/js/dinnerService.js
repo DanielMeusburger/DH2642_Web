@@ -27,8 +27,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
 	return numberOfGuest;
   }
   
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
-  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'66J8l00npnHHZcCNLRhxkfW1OHxbojy4',RecipeID:'12'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
+  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'1hg3g4Dkwr6pSt22n00EfS01rz568IR6',RecipeID:'12'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
   
   //DM
   this.getFullMenu = function () {
