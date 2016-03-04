@@ -15,4 +15,8 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
     },function(data){
         $scope.status = "There was an error";
     });
+
+    $scope.addDish = function(dish){
+        Dinner.addDishToMenu(dish.RecipeID);
+    }
 });

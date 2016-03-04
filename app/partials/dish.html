@@ -24,9 +24,17 @@ Instructions, Ingredients and total cost. -->
                                 <b>Quantity :</b> {{ingredient.Quantity}}
                                 <b>Preparation:</b>{{ingredient.PreparationNotes}}
                                 <b>Unit : </b>{{ingredient.Unit}}
+                                <b>Price : </b>{{ingredient.Quantity * 1}} Sek
                             </li>
                         </ul>
-
+                        <div>
+                            <b>Instructions:</b> <br />
+                            {{dish.Instructions}}
+                        </div>
+                    <br />
+                        <div>
+                            <button ng-click="addDish(dish)">Select</button>
+                        </div>
                     </div>
             </div>
             <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
