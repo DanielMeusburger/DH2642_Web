@@ -6,9 +6,12 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
     $scope.id = $routeParams.dishId;
+
+    $scope.status = "Searching...";
     Dinner.Dish.get({RecipeID:$routeParams.dishId},function(data){
-        $scope.dish=data.Results;
-        $scope.status = "Showing " + data.Results.length + " results";
+        $scope.dish = data;
+        $scope.status = "Result Found";
+        console.log(data);
     },function(data){
         $scope.status = "There was an error";
     });
