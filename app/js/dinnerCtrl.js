@@ -1,7 +1,7 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
-
+//Check the data in model or cookies else use API
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
   $scope.setNumberOfGuest = function(number){
