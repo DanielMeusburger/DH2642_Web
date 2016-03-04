@@ -16,8 +16,8 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
    });
  }
  
- $scope.addDish = function(dish){
-     Dinner.addDishToMenu(dish);
+ $scope.addDish = function(id){
+     Dinner.addDishToMenu(id);
  }
 
 });
