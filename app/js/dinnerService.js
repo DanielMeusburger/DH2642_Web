@@ -36,14 +36,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
     return fullMenu;
   }	
 
-  this.addDishToMenu = function(id){
-    if(fullMenu.indexOf(id) == -1 ){
-      fullMenu.push(id);
+  this.addDishToMenu = function(dish){
+    if(fullMenu.indexOf(dish) == -1 ){
+      fullMenu.push(dish);
     }
   }
 
-  this.removeDishFromMenu = function (id){
-    var index = fullMenu.indexOf(id);
+  this.removeDishFromMenu = function (dish){
+    var index = fullMenu.indexOf(dish);
     if (index > -1) {
       fullMenu.splice(index, 1);
     }
