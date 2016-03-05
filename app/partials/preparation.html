@@ -9,16 +9,12 @@
 <div class="row well">
 	<div style="clear:both;" ng-repeat="dish in fullMenu">
 		<div style="display:block;float:left;width:45%;padding-right:5px;">	
-			<img style="float:left;height:140px;width:140px;margin-right:10px;" ng-src="{{dish.ImageURL120}}"/>
+			<img style="float:left;height:140px;width:140px;margin-right:10px;margin-bottom:20px;" ng-src="{{dish.ImageURL}}"/>
 			<span style="font-weight:bold;">{{dish.Title}}</span> <span style="color:#ccc;">({{dish.Category}})</span> <br/>
-			<span style="color:#444;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. <!-- Summary not available by API {{dish.Summary}} --></span>	
+			<span style="color:#444;">{{dish.Description}}</span>	
 		</div>
 		<div style="float:left;width:55%;border-left:1px solid #ddd;padding-left:15px;margin-bottom:20px;">
 			<span style="font-weight:bold;">Preparation</span></br>
-			 <!-- Summary not available by API {{dish.Instructions}} -->
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			</br><br/>
-			Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
-		</div>	
+			{{dish.Instructions}}
 	</div>
 </div>

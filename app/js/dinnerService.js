@@ -4,9 +4,13 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-//DM - Is this the correct setup of $cookieStore below
 dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
+  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN',RecipeID:'@RecipeID'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
+  
+  // ?? Can we implement this in a cleaner version? It seems we need a variable to access it in the cookies setting
+  var Dish = this.Dish
  
   if(! $cookieStore.get('numberOfGuest')){
 	   var numberOfGuest = 2;
@@ -15,7 +19,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   };
   
   var fullMenu = [];
-  var fullMenuIds = [];
+  var fullMenuIDs = [];
   //var dishes = [];
   //var dish;
 
@@ -28,17 +32,17 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
 	return numberOfGuest;
   }
   
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
-  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN',RecipeID:'@RecipeID'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
-  
   //DM
   this.getFullMenu = function () {
     return fullMenu;
   }	
 
-  this.addDishToMenu = function(dish){
+  this.addDishToMenu = function (dish){
     if(fullMenu.indexOf(dish) == -1 ){
       fullMenu.push(dish);
+	  fullMenuIDs.push(dish.RecipeID);
+	  $cookieStore.put('fullMenuIDs',fullMenuIDs);
+	  console.log("Full Menu: " + fullMenu);
     }
   }
 
@@ -46,9 +50,31 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
     var index = fullMenu.indexOf(dish);
     if (index > -1) {
       fullMenu.splice(index, 1);
+	  fullMenuIDs.splice(index, 1);
     }
   }
 
+  //TODO: Sorting is not correct ??
+  //Check the data in model or cookies else use API
+  if(fullMenu.length > 0){
+	// use fullMenu objects
+	console.log("Objects already in fullMenu" + fullMenu);
+  } else if ($cookieStore.get('fullMenuIDs')){
+	// loop through the fullMenuID and fill the fullMenu with objects
+	var fullMenuIDs = $cookieStore.get('fullMenuIDs');
+	fullMenuIDs.forEach(function(id) {
+		console.log(id);
+		status = "Processing";
+		Dish.get({RecipeID:id},function(data){
+			fullMenu.push(data);
+			status = "Result Found";
+			console.log(data);
+		},function(data){
+			status = "There was an error";
+		});
+	});
+  }
+  
   /*
    if(fullMenu is in model){
       return
