@@ -36,9 +36,16 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   //DM
   this.getFullMenu = function () {
     return fullMenu;
-  }	
+  }
 
-  this.addDishToMenu = function (dish){
+    this.getFullMenuPrices = function () {
+        if(fullMenuPrices.length == 0){
+            fullMenuPrices = $cookieStore.get('fullMenuPrices');
+        }
+        return fullMenuPrices;
+    }
+
+    this.addDishToMenu = function (dish){
     if(fullMenu.indexOf(dish) == -1 ){
       fullMenu.push(dish);
 	  fullMenuIDs.push(dish.RecipeID);
@@ -57,6 +64,23 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
       //$rootScope.$apply();
     }
   }
+
+    this.addPriceToFullMenu = function(id, pricePerDish){
+        fullMenuPrices.push({'id':id,'price':pricePerDish});
+        $cookieStore.put('fullMenuPrices',fullMenuPrices);
+        for (var i = 0; i < fullMenuPrices.length; i++) {
+            console.log( " Prices : "+fullMenuPrices[i].id+" ,"+fullMenuPrices[i].price );
+        }
+    }
+
+    this.deletePriceFromFullMenu = function (id){
+        for (var i = 0; i < fullMenuPrices.length; i++) {
+            if(fullMenuPrices[i].id == id){
+                fullMenuPrices.splice(i, 1);
+            }
+            $cookieStore.put('fullMenuPrices',fullMenuPrices);
+        }
+    }
 
   //TODO: Sorting is not correct ??
   //Check the data in model or cookies else use API

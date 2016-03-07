@@ -17,9 +17,9 @@
 				<td><b>Cost</b></td></tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="menu in fullMenu">
+				<tr ng-repeat="menu in fullMenu" ng-init="getPrice(menu)">
 					<td>{{menu.Title}}</td>
-					<td>&nbsp;&nbsp;&nbsp;50 Sek</td>
+					<td>&nbsp;&nbsp;&nbsp;{{menu.individualPrice}}</td>
 					<td>&nbsp;&nbsp;&nbsp;<img style="height:10px;width:10px;cursor: pointer" src="images/delete.png" ng-click="removeDish(menu)"/></td>
 				</tr>
 				<tr><td colspan="2"><hr /></td></tr>

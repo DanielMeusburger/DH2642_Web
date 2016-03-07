@@ -33,6 +33,16 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   $scope.removeDish = function(dish) {
     Dinner.removeDishFromMenu(dish);
   }
+
+  $scope.fullPriceList = Dinner.getFullMenuPrices();
+  $scope.getPrice = function(menu) {
+    for (var i = 0; i < $scope.fullPriceList.length; i++) {
+      if($scope.fullPriceList[i].id == menu.RecipeID){
+        menu.individualPrice = $scope.fullPriceList[i].price;
+      }
+    }
+  }
+
     /*$scope.$watch('service.getFullMenu()', function(newVal) {
 
         console.log("New Data", newVal);
