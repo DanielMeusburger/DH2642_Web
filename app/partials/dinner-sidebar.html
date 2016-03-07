@@ -10,6 +10,23 @@
 	this with Total price of the menu -->
 	Total number of guest: {{getNumberOfGuests()}}
 
+		<div>
+			<table>
+				<thead>
+				<tr><td><b>Dish Name</b></td>
+				<td><b>Cost</b></td></tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="menu in fullMenu">
+					<td>{{menu.Title}}</td>
+					<td>&nbsp;&nbsp;&nbsp;50 Sek</td>
+					<td>&nbsp;&nbsp;&nbsp;<img style="height:10px;width:10px;cursor: pointer" src="images/delete.png" ng-click="removeDish(menu)"/></td>
+				</tr>
+				<tr><td colspan="2"><hr /></td></tr>
+				<tr><td>Total</td><td>0 Sek</td></tr>
+				</tbody>
+			</table>
+		</div>
 	<a href="#/dinner-overview" class="btn btn-primary">Confirm Dinner</a>
 </div>
 </div>

@@ -16,6 +16,13 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
         $scope.status = "There was an error";
     });
 
+    $scope.total = 0
+    $scope.setTotals = function(ingredient){
+        if (ingredient){
+            $scope.total += (ingredient.Quantity * 1);
+        }
+    }
+
     $scope.addDish = function(dish){
         Dinner.addDishToMenu(dish);
     }

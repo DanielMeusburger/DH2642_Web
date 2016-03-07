@@ -20,6 +20,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   
   var fullMenu = [];
   var fullMenuIDs = [];
+  var fullMenuPrices = [];
   //var dishes = [];
   //var dish;
 
@@ -43,6 +44,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
 	  fullMenuIDs.push(dish.RecipeID);
 	  $cookieStore.put('fullMenuIDs',fullMenuIDs);
 	  console.log("Full Menu: " + fullMenu);
+      //$rootScope.$apply();
     }
   }
 
@@ -51,6 +53,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
     if (index > -1) {
       fullMenu.splice(index, 1);
 	  fullMenuIDs.splice(index, 1);
+      $cookieStore.put('fullMenuIDs',fullMenuIDs);
+      //$rootScope.$apply();
     }
   }
 
@@ -63,12 +67,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
 	// loop through the fullMenuID and fill the fullMenu with objects
 	var fullMenuIDs = $cookieStore.get('fullMenuIDs');
 	fullMenuIDs.forEach(function(id) {
-		console.log(id);
+		//console.log(id);
 		status = "Processing";
 		Dish.get({RecipeID:id},function(data){
 			fullMenu.push(data);
 			status = "Result Found";
-			console.log(data);
+			//console.log(data);
 		},function(data){
 			status = "There was an error";
 		});

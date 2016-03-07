@@ -19,7 +19,7 @@ Instructions, Ingredients and total cost. -->
                     </table>
                         <b><i>Ingredients</i></b>
                         <ul>
-                            <li ng-repeat="ingredient in dish.Ingredients">
+                            <li ng-repeat="ingredient in dish.Ingredients" ng-init="setTotals(ingredient)">
                                 <b>Name :</b> {{ingredient.Name}}
                                 <b>Quantity :</b> {{ingredient.Quantity}}
                                 <b>Preparation:</b>{{ingredient.PreparationNotes}}
@@ -27,13 +27,17 @@ Instructions, Ingredients and total cost. -->
                                 <b>Price : </b>{{ingredient.Quantity * 1}} Sek
                             </li>
                         </ul>
+                        <ul><li><b>Total : </b>{{total| number:2}} Sek</li></ul>
                         <div>
                             <b>Preparation:</b> <br />
                             {{dish.Instructions}}
                         </div>
                     <br />
                         <div>
-                            <button ng-click="addDish(dish)">Select</button>
+                            <button ng-click="addDish(dish)" class="btn btn-primary">Select</button>
+                            <div style="float:right;">
+                                <a href="#/search" class="btn btn-primary">Back</a>
+                            </div>
                         </div>
                     </div>
             </div>
