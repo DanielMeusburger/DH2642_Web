@@ -36,6 +36,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.fullPriceList = Dinner.getFullMenuPrices();
+
   $scope.getPrice = function(menu) {
     for (var i = 0; i < $scope.fullPriceList.length; i++) {
       if($scope.fullPriceList[i].id == menu.RecipeID){

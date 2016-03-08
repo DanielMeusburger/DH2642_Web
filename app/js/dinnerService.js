@@ -10,7 +10,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN',RecipeID:'@RecipeID'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
   
   // ?? Can we implement this in a cleaner version? It seems we need a variable to access it in the cookies setting
-  var Dish = this.Dish
+  var Dish = this.Dish;
  
   if(! $cookieStore.get('numberOfGuest')){
 	   var numberOfGuest = 2;
@@ -21,8 +21,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   var fullMenu = [];
   var fullMenuIDs = [];
   var fullMenuPrices = [];
-  //var dishes = [];
-  //var dish;
+
 
   this.setNumberOfGuests = function(num) {
     numberOfGuest = num;
@@ -39,9 +38,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   }
 
     this.getFullMenuPrices = function () {
-        if(fullMenuPrices.length == 0){
+        /*if(fullMenuPrices == null || fullMenuPrices.length == 0){
             fullMenuPrices = $cookieStore.get('fullMenuPrices');
-        }
+        }*/
         return fullMenuPrices;
     }
 
@@ -101,6 +100,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
 			status = "There was an error";
 		});
 	});
+
+      if(fullMenuPrices.length > 0){
+          console.log("Objects already in fullMenurices" + fullMenuPrices);
+      }else if ($cookieStore.get('fullMenuPrices')) {
+          fullMenuPrices = $cookieStore.get('fullMenuPrices');
+      }
   }
   
   /*
