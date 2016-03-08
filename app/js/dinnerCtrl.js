@@ -9,6 +9,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.setNumberOfGuest = function(number){
     Dinner.setNumberOfGuests(number);
+	$scope.getTotalCost();
   }
 
   $scope.getNumberOfGuests = function() {
@@ -44,6 +45,19 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
       }
     }
   }
+  
+  $scope.getTotalCost = function() {
+	$scope.totalCost = 0;
+    for (var i = 0; i < $scope.fullPriceList.length; i++) {
+      $scope.totalCost = $scope.totalCost + parseFloat($scope.fullPriceList[i].price);
+    }
+	//$scope.totalCost = $scope.fullPriceList.reduce((a, b) => a + b, 0);
+	$scope.totalCost = $scope.totalCost * $scope.numberOfGuests;
+	return $scope.totalCost;
+	console.log("Costs: " + $scope.totalCost);
+  }
+  
+  $scope.totalCost = $scope.getTotalCost(); // should this reference the dinner model?
 
     /*$scope.$watch('service.getFullMenu()', function(newVal) {
 

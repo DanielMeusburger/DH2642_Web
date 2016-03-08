@@ -6,8 +6,8 @@
 
 dinnerPlannerApp.factory('Dinner',function ($resource,$cookieStore) {
   
-  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
-  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN',RecipeID:'@RecipeID'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
+  this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:'18f3cT02U9f6yRl3OKDpP8NA537kxYKu'}); //18f3cT02U9f6yRl3OKDpP8NA537kxYKu
+  this.Dish = $resource('http://api.bigoven.com/recipe/:RecipeID',{api_key:'18f3cT02U9f6yRl3OKDpP8NA537kxYKu',RecipeID:'@RecipeID'}); //XKEdN82lQn8x6Y5jm3K1ZX8L895WUoXN //1hg3g4Dkwr6pSt22n00EfS01rz568IR6
   
   // ?? Can we implement this in a cleaner version? It seems we need a variable to access it in the cookies setting
   var Dish = this.Dish;

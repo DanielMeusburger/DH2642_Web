@@ -17,13 +17,13 @@
 				<td><b>Cost</b></td></tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="menu in fullMenu" ng-init="getPrice(menu)">
-					<td>{{menu.Title}}</td>
-					<td>&nbsp;&nbsp;&nbsp;{{menu.individualPrice}}</td>
-					<td>&nbsp;&nbsp;&nbsp;<img style="height:10px;width:10px;cursor: pointer" src="images/delete.png" ng-click="removeDish(menu)"/></td>
+				<tr ng-repeat="dish in fullMenu" ng-init="getPrice(dish)">
+					<td>{{dish.Title}}</td>
+					<td>&nbsp;&nbsp;&nbsp;{{dish.individualPrice}}</td>
+					<td>&nbsp;&nbsp;&nbsp;<img style="height:10px;width:10px;cursor: pointer" src="images/delete.png" ng-click="removeDish(dish)"/></td>
 				</tr>
 				<tr><td colspan="2"><hr /></td></tr>
-				<tr><td>Total</td><td>0 Sek</td></tr>
+				<tr><td>Total</td><td>{{getTotalCost()}} Sek</td></tr>
 				</tbody>
 			</table>
 		</div>

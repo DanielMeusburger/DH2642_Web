@@ -25,6 +25,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
     $scope.addDish = function(dish, id, dishTotal){
         Dinner.addDishToMenu(dish);
-        Dinner.addPriceToFullMenu(id, dishTotal);
+        Dinner.addPriceToFullMenu(id, parseFloat(dishTotal));
     }
 });
