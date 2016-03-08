@@ -23,7 +23,7 @@
 					<td>&nbsp;&nbsp;&nbsp;<img style="height:10px;width:10px;cursor: pointer" src="images/delete.png" ng-click="removeDish(dish)"/></td>
 				</tr>
 				<tr><td colspan="2"><hr /></td></tr>
-				<tr><td>Total</td><td>{{getTotalCost()}} Sek</td></tr>
+				<tr><td>Total</td><td>{{getTotalCost() * getNumberOfGuests()}} Sek</td></tr>
 				</tbody>
 			</table>
 		</div>
