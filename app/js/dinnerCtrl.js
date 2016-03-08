@@ -58,7 +58,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
   
   $scope.totalCost = $scope.getTotalCost(); // should this reference the dinner model?
-  
+
     /*$scope.$watch('service.getFullMenu()', function(newVal) {
 
         console.log("New Data", newVal);

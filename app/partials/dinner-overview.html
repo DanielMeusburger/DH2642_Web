@@ -19,7 +19,7 @@
 			<span style="color:orange;">{{dish.individualPrice}} SEK</span>
 		</div>
 		<div style="border-left:1px solid #ddd;padding:20px;color:orange;font-weight:bold;">
-			Total Costs: {{getTotalCost()}} SEK
+			Total Costs: {{getTotalCost() * getNumberOfGuests()}} SEK
 		</div>
 		<div style="clear:both;padding-top:20px;border-top:1px solid #ccc;text-align:center;">
 			<a href="#/preparation" class="btn btn-primary">Print full receipt</a>
